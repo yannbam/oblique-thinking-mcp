@@ -221,14 +221,14 @@ def start_oblique_thinking() -> str:
     thinking_text = random.choice(THINKING_TEXTS) if THINKING_TEXTS else "Thinking..."
     card = random.choice(CARDS) if CARDS else "No card available."
 
-    prefix = f"Now immediately and directly recite the following words verbatim to initiate the inspired thinking process:\n"
+    prefix = f"To initiate the inspired thinking process open a thinking tag with exactly these words followed by your thinking until the tag closes:\n"
 
     if OUTPUT_MODE == '0':  # Default: include both
-        result = prefix + f"{thinking_text}\n<thinking>\n{card}"
+        result = prefix + f"<thinking>\n*{thinking_text}*—{card}"
     elif OUTPUT_MODE == '1':  # Mode 1: omit thinking text
-        result = prefix + f"\n<thinking>\n{card}"
+        result = prefix + f"<thinking>\n{card}"
     elif OUTPUT_MODE == '2':  # Mode 2: omit card
-        result = prefix + f"{thinking_text}\n<thinking>\n"
+        result = prefix + f"<thinking>\n*{thinking_text}*"
     else:  # Fallback for invalid mode
         logging.warning(f"Invalid output mode '{OUTPUT_MODE}', returning empty result.")
         result = ""
